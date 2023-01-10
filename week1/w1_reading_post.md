@@ -15,4 +15,7 @@ Q1. The factors to consider when developing a vis include:
     Whether they are professionals trying to explore a problem,
     or maintainers monitoring a system,
     or outsiders who read to understand some takeaways.
-1. 
+1. The size and complexity of the data.
+
+    Small and simple data can be visualized manually,
+    while big data can only be visualized using machines.
