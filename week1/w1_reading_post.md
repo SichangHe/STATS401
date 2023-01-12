@@ -19,7 +19,7 @@ The factors to consider when developing a vis include:
 
 An example of a network.
 
-![example of network](programming_scripting_and_markup_languages.png)
+![example of network](https://github.com/SichangHe/STATS401/blob/main/week1/programming_scripting_and_markup_languages.png?raw=true)
 
 From [stackoverflow survey 2022](https://survey.stackoverflow.co/2022/#section-worked-with-vs-want-to-work-with-programming-scripting-and-markup-languages).
 
