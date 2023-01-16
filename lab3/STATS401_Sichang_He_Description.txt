@@ -1,0 +1,2 @@
+This dataset was obtained by searching "#rust" on Twitter with at least 10 likes.
+The attributes include the date, URL, content, hashtags, detected language, user name, user location, view count, like count, and retweet count of the tweets.
