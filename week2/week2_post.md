@@ -13,7 +13,7 @@ then analyze its user tasks.
 
 ### Static visualization
 
-![Time to perform linking](https://github.com/rui314/mold/blob/main/docs/comparison.png?raw=true)
+![Time to perform linking](https://raw.githubusercontent.com/rui314/mold/main/docs/comparison.png)
 
 User task:
 *Compare* the link time among `gold`, `lld`, and `mold`,
@@ -21,7 +21,7 @@ and *query* for the fastest linker.
 
 ### Interactive visualization
 
-![Votes from Labour vs Conservative](vote_labour_vs_conservative.png)
+![Votes from Labour vs Conservative](https://raw.githubusercontent.com/SichangHe/STATS401/main/week2/vote_labour_vs_conservative.png)
 From [The New York Times](https://www.nytimes.com/interactive/2017/06/08/world/europe/british-general-election-results-analysis.html).
 
 User Task:
@@ -41,7 +41,7 @@ Choosing the interactive visualization.
 - Domain situation
 
     This is a news article that should present concisely and clearly
-    the Labour Party gaining votes in the 2017 election.
+    the Labour Party gaining votes in the 2017 election compared to in 2015.
 - Task and data abstraction
     - Why:
         Present the majority category in each geolocation each time.
