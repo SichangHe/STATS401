@@ -1,8 +1,8 @@
 const temperature = [3, 6, 15, 23, 29, 32, 33, 32, 27, 19, 10, 4];
 const svg = d3.select("body")
     .append("svg")
-    .attr('height', '100%')
-    .attr('width', '100%');
+    .attr('height', '50vh')
+    .attr('width', '100vw');
 
 svg.append('g')
     .attr('class', 'bar-chart')
