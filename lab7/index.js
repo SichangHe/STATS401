@@ -3,6 +3,7 @@ const svg = d3.select("body")
     .append("svg")
     .attr('height', '100%')
     .attr('width', '100%');
+
 svg.append('g')
     .attr('class', 'bar-chart')
     .selectAll('rect')
@@ -36,6 +37,7 @@ svg.append('g')
     .attr('cx', function(d, i) { fixedX1 += d * 3 + i * 10; return fixedX1; })
     .attr('cy', '700')
     .attr('r', function(d) { return d * 2 });
+
 const ug_number = [247, 325, 318, 407];
 const fixedX2 = 600;
 svg.append('g')
@@ -49,6 +51,21 @@ svg.append('g')
     .attr('y1', function(_, i) { return (150 + i * 50); })
     .attr('x2', function(d) { return fixedX2 + d; })
     .attr('y2', function(_, i) { return (150 + i * 50); });
+
+const years = ['senior', 'junior', 'sophomore', 'freshman']
+const years_text_x = 1020;
+d3.select('svg > g.lines')
+    .append('text')
+    .selectAll('tspan')
+    .data(years)
+    .join('tspan')
+    .attr('fill', '#a4baff')
+    .attr('font-size', '28px')
+    .attr('font-family', 'Arial')
+    .attr('x', years_text_x)
+    .attr('y', (_, i) => 150 + i * 50)
+    .text((d) => d)
+
 svg.append('g')
     .attr('class', 'text')
     .append('text')
@@ -58,31 +75,17 @@ svg.append('g')
     .style("fill", "black")
     .style("stroke", "red")
     .attr('font-size', 25);
+
 const fixedX3 = 1320;
-svg.append('g')
-    .attr('class', 'dku-text')
-    .append('text')
+const dku_text = (selection, y, anchor) => selection.append('text')
     .attr('x', fixedX3)
-    .attr('y', 175)
-    .attr('text-anchor', 'start')
+    .attr('y', y)
+    .attr('text-anchor', anchor)
     .attr('font-size', 50)
     .style("fill", "#ff90ab")
     .text('DKU');
 svg.append('g')
     .attr('class', 'dku-text')
-    .append('text')
-    .attr('x', fixedX3)
-    .attr('y', 225)
-    .attr('text-anchor', 'middle')
-    .attr('font-size', 50)
-    .style("fill", "#ff7d9c")
-    .text('DKU');
-svg.append('g')
-    .attr('class', 'dku-text')
-    .append('text')
-    .attr('x', fixedX3)
-    .attr('y', 270)
-    .attr('text-anchor', 'end')
-    .attr('font-size', 50)
-    .style("fill", "#ff698d")
-    .text('DKU');
+    .call(dku_text, 175, "start")
+    .call(dku_text, 225, "middle")
+    .call(dku_text, 270, "end");
