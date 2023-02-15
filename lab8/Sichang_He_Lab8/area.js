@@ -15,5 +15,7 @@
         .attr("width", width)
     svg.append("path")
         .attr("d", area(data))
-        .attr("fill", "pink")
+        .attr("fill", "none")
+        .attr("stroke", "black")
+        .attr("stroke-width", 1)
 })()
