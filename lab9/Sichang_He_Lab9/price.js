@@ -3,6 +3,11 @@
     const width = 1000;
     const parseDate = d3.timeParse("%m/%d/%Y")
 
+    const svg = d3.select("body")
+        .append("svg")
+        .attr("height", "100%")
+        .attr("width", "100%")
+
     const data = await d3.csv("price_data.csv",
         (d) => ({
             date: parseDate(d.date),
@@ -26,11 +31,6 @@
     const yAxis = d3.axisLeft(y)
     const xAxis = d3.axisBottom(x)
 
-    const svg = d3.select("body")
-        .append("svg")
-        .attr("height", "100%")
-        .attr("width", "100%")
-
     const chart = svg.append("g")
         .attr("transform", "translate(50,50)")
 
@@ -40,6 +40,7 @@
 
     chart.append("path")
         .attr("d", line(data))
+        .attr('class', 'price')
     chart.append("g")
         .attr("class", "x-axis")
         .attr("transform", `translate(0,${height})`)

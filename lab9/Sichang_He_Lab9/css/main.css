@@ -7,7 +7,7 @@ body {
   height: 100%;
 }
 
-path {
+path.price {
   stroke: #b08dea;
   stroke-width: 2px;
   fill: none;
