@@ -5,7 +5,7 @@
 
     const svg = d3.select("body")
         .append("svg")
-        .attr("height", "100%")
+        .attr("height", "30%")
         .attr("width", "100%")
 
     const data = await d3.csv("price_data.csv",

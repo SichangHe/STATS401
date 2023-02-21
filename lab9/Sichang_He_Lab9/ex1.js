@@ -6,12 +6,14 @@
 
     const projection = d3
         .geoNaturalEarth1()
-        .scale(width / 4)
-        .translate([width / 5, (2 * height) / 3]);
+        .scale(width)
+        .translate([0, height * 3 / 2]);
 
     const tooltip = d3.select("body")
         .append("div")
-        .text("name");
+        .text("Loading…");
+    const no_hover = () =>
+        tooltip.text("Hover red bubbles for names of the earthquake locations.")
 
     const svg = d3.select('body')
         .append('svg')
@@ -21,6 +23,7 @@
     const requesting = await request
     const data = await requesting.json()
     const features = data.features
+    no_hover()
 
     svg
         .append('g')
@@ -41,11 +44,18 @@
         .join('circle')
         .attr('cx', (d) => projection(d.coord)[0])
         .attr('cy', (d) => projection(d.coord)[1])
-        .attr('r', 3)
+        .attr('r', 8)
         .style('fill', '#f00')
         .style('stroke', '#f00')
         .style('stroke-width', 0.7)
         .attr('fill-opacity', 0.5)
         .style('opacity', 0.8)
-        .on("mouseover", (_, d) => tooltip.text(d.name).style("visibility", "visible"));
+        .on("mouseout", (e) =>
+            d3.select(e.target).style('opacity', 0.8) &&
+            no_hover()
+        )
+        .on("mouseover", (e, d) =>
+            d3.select(e.target).style('opacity', 1) &&
+            tooltip.text(d.name)
+        );
 })()
