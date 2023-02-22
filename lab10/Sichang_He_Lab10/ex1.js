@@ -13,33 +13,37 @@
         .append("div")
         .text("Loading…");
     const no_hover = () =>
-        tooltip.text("Hover red bubbles for names of the earthquake locations.")
+        tooltip.text(
+            `Hover red bubbles for names of the earthquake locations,
+            drag or scroll to pan or zoom.`
+        )
 
     const svg = d3.select('body')
         .append('svg')
         .attr('width', width)
         .attr('height', height);
+    const g = svg.append('g')
 
     const requesting = await request
     const data = await requesting.json()
     const features = data.features
     no_hover()
 
-    svg
-        .append('g')
-        .selectAll('path')
+    g.selectAll('path')
         .data(features)
         .join('path')
         .attr('fill', pale_green_gray)
         .attr('d', d3.geoPath().projection(projection))
         .style('stroke', '#fff');
 
+    const zoom = d3.zoom().on('zoom', (e) => g.attr('transform', e.transform))
+    svg.call(zoom)
+
     const quakes = [
         { coord: [37.166, 37.032], name: 'Şehitkamil, Gaziantep' },
         { coord: [38.0818, 37.1773], name: 'Ekinözü, Kahramanmaraş' },
     ]
-    svg
-        .selectAll('circle')
+    g.selectAll('circle')
         .data(quakes)
         .join('circle')
         .attr('cx', (d) => projection(d.coord)[0])
